@@ -1,0 +1,207 @@
+// reset 重置样式
+* {
+    box-sizing: border-box;
+    outline: none
+}
+
+html {
+    font-size: 13px
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.2em;
+    background: #f1f1f1;
+    // -webkit-font-smoothing:antialiased
+}
+    
+a {
+    color: #999
+}
+
+// colors
+$colors:(
+    "primary":#db9e3f,
+    "info":#4b67af,
+    'white':#fff,
+    "black":#000,
+    "dark":#222,
+    "dark-1":#343440,
+    "grey":#999,
+    "grey-1":#666,
+    "light":#f9f9f9, 
+);
+
+
+@each $colorkey,$color in $colors {
+    .text-#{$colorkey}{
+        color:$color
+    }
+
+    .bg-#{$colorkey}{
+        background-color:$color
+    }
+    
+}
+
+// text align
+@each $var in (left,center,right) {
+ .text-#{$var}{
+    text-align:$var!important;
+ }
+    
+}
+
+
+// font size
+$base-font-size:1rem;
+$font-sizes:(
+    xxs:0.6154, // 8px
+    xs:0.7692,//10px
+    sm:0.9231, //12px
+    md:1, // 13px
+    lg:1.0769, //14px
+    xl:1.2308 // 16px
+    );
+
+@each $sizekey,$size in $font-sizes {
+
+    .fs-#{$sizekey}{
+        font-size: $size*$base-font-size;
+    }
+}
+
+
+// flex
+.d-flex {
+    display:flex
+}
+
+// 主轴
+$flex-jc:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    between:space-between,
+    around:space-around
+);
+
+@each $key,$value in $flex-jc {
+    .jc-#{$key}{
+        justify-content: $value
+    }
+}
+
+// 侧轴
+
+$flex-ai:(
+    start:flex-start,
+    end:flex-end,
+    center:center,
+    stretch:stretch
+);
+
+@each $key,$value in $flex-ai {
+    .jc-#{$key}{
+        align-items: $value
+    }
+};
+
+.flex-column{
+    flex-direction: column
+}
+
+.flex-1{
+    flex: 1
+}
+
+.flex-grow-1{
+    flex-grow: 1
+}
+
+// margin,padding
+$space-types:(m:margin,p:padding);
+
+
+$spacing-directions:(t:top,r:rich,b:bottom,l:left);
+
+$spacing-base-size:1rem;
+
+$spacing-size:(
+0:0,
+1:0.25,
+2:0.5,
+3:1,
+4:1.5,
+5:3
+);
+
+@each $typekey,$type in $space-types {
+
+
+        @each $sizekey,$size in $spacing-size {
+            //.mt-1
+            .#{$typekey}-#{$sizekey}{
+                #{$type}:$size * $spacing-base-size
+            }
+        }
+
+        @each $sizekey,$size in $spacing-size {
+            //.mt-1
+            .#{$typekey}x-#{$sizekey}{
+                #{$type}:$size * $spacing-base-size
+            }
+        }
+    
+        @each $sizekey,$size in $spacing-size {
+            //.mt-1
+            .#{$typekey}y-#{$sizekey}{
+                #{$type}:$size * $spacing-base-size
+            }
+        }
+
+
+    @each $directionkey,$direction in $spacing-directions{
+        @each $sizekey,$size in $spacing-size {
+            //.mt-1
+            .#{$typekey}#{$directionkey}-#{$sizekey}{
+                #{$type}-#{$direction}:$size * $spacing-base-size
+            }
+        }
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+ };
+
+ //btn
+ .btn {
+     border:none;
+     border-radius: 0.1538rem;
+     font-size:map-get($font-sizes,'sm')* $base-font-size    
+ }
+
+ .nav {
+
+    .nav-item {
+        border-bottom: 3px solid transparent;
+
+        &.active {
+            border-bottom:3px solid #fff
+        }
+    }
+     
+ }
+
+// width,height
+.w-100 {
+    width: 100%
+}
+
+.h-100{
+    height: 100%
+}
+
+
+
+
+
+
